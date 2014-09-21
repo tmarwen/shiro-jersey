@@ -17,93 +17,97 @@
   ~ specific language governing permissions and limitations
   ~ under the License.
   -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <parent>
-        <groupId>org.apache.shiro.jersey</groupId>
-        <artifactId>shiro-jersey-root</artifactId>
-        <version>1.0.3-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
-    </parent>
-	
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.apache.shiro</groupId>
-	<artifactId>jersey-sample</artifactId>
-	<name>Apache Shiro :: Samples :: Jersey</name>
-	<packaging>war</packaging>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <groupId>org.apache.shiro.jersey</groupId>
+    <artifactId>shiro-jersey-root</artifactId>
+    <version>1.0.3-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
 
-	<properties>
-		<jdk.version>1.6</jdk.version>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.apache.shiro</groupId>
+  <artifactId>jersey-sample</artifactId>
+  <name>Apache Shiro :: Samples :: Jersey</name>
+  <packaging>war</packaging>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.apache.shiro</groupId>
-			<artifactId>shiro-core</artifactId>
-			<version>[1.2.2,2.0.0)</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.shiro</groupId>
-			<artifactId>shiro-web</artifactId>
-			<version>[1.2.2,2.0.0)</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.shiro</groupId>
-			<artifactId>shiro-jersey</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-server</artifactId>
-			<version>[1.10,2.0)</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-servlet</artifactId>
-			<version>[1.10,2.0)</version>
-		</dependency>
-	</dependencies>
-	
-	<build>
-        <plugins>
- 			<plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.0.2</version>
-                <configuration>
-                    <source>${jdk.version}</source>
-                    <target>${jdk.version}</target>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                </configuration>
-            </plugin>        	
-            <plugin>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <forkMode>never</forkMode>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.mortbay.jetty</groupId>
-                <artifactId>maven-jetty-plugin</artifactId>
-                <version>6.1.26</version>
-                <configuration>
-                    <contextPath>/</contextPath>
-                    <connectors>
-                        <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
-                            <port>9080</port>
-                            <maxIdleTime>60000</maxIdleTime>
-                        </connector>
-                    </connectors>
-                    <requestLog implementation="org.mortbay.jetty.NCSARequestLog">
-                        <filename>./target/yyyy_mm_dd.request.log</filename>
-                        <retainDays>90</retainDays>
-                        <append>true</append>
-                        <extended>false</extended>
-                        <logTimeZone>GMT</logTimeZone>
-                    </requestLog>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-	
+  <properties>
+    <jdk.version>1.6</jdk.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.shiro</groupId>
+      <artifactId>shiro-core</artifactId>
+      <version>[1.2.2,2.0.0)</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.shiro</groupId>
+      <artifactId>shiro-web</artifactId>
+      <version>[1.2.2,2.0.0)</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.shiro</groupId>
+      <artifactId>shiro-jersey</artifactId>
+      <version>${project.version}</version>
+      <scope>system</scope>
+      <systemPath>/home/marwen/Work/dependencies/repository/org/apache/shiro/shiro-jersey/${project.version}/shiro-jersey-${project.version}.jar</systemPath>
+    </dependency>
+    <dependency>
+      <groupId>com.sun.jersey</groupId>
+      <artifactId>jersey-server</artifactId>
+      <version>[1.10,2.0)</version>
+    </dependency>
+    <dependency>
+      <groupId>com.sun.jersey</groupId>
+      <artifactId>jersey-servlet</artifactId>
+      <version>[1.10,2.0)</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.0.2</version>
+        <configuration>
+          <source>${jdk.version}</source>
+          <target>${jdk.version}</target>
+          <encoding>${project.build.sourceEncoding}</encoding>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <forkMode>never</forkMode>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.mortbay.jetty</groupId>
+        <artifactId>maven-jetty-plugin</artifactId>
+        <version>6.1.26</version>
+        <configuration>
+          <contextPath>/</contextPath>
+          <connectors>
+            <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+              <port>9080</port>
+              <maxIdleTime>60000</maxIdleTime>
+            </connector>
+          </connectors>
+          <requestLog implementation="org.mortbay.jetty.NCSARequestLog">
+            <filename>./target/yyyy_mm_dd.request.log</filename>
+            <retainDays>90</retainDays>
+            <append>true</append>
+            <extended>false</extended>
+            <logTimeZone>GMT</logTimeZone>
+          </requestLog>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
 </project>
